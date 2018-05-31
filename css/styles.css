@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    top: 55px;
+    border-radius: 0px;
+    margin-bottom: 0;
+}
+
+.nav-title {
+    font-family: "brandon-grotesque", "Brandon Grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 30px;
+    line-height: 40px;
+    font-weight: bold;
+    color: black;
+    padding: 18px 18px 0 18px;
+}
+
+.sidenav {
+    padding: 20px;
+    position: absolute;
+    left: 0px;
+    top: 20px;
+    bottom: 0px;
+    right: 0px;
+    min-width: 250px;
+}
+
+.list-group-item {
+    padding: 5px;
+    font-weight: bold;
+    border: solid 2px rgb(129, 127, 127);
+}
+
+.list-group-item:hover {
+    background-color: #555;
+}
+
+.infoTitle {
+    text-decoration: underline;
+    text-align: center;
+}
+
+.description {
+    font-weight: bold;
+    font-size: 15px;
+    text-align: justify;
+}
+
+.description span {
+    font-weight: normal;
+}
+
+#map {
+    margin: 0;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    z-index: -4;
+}
+
+.btn-success {
+    background-color: #555; 
+}
