@@ -2,30 +2,30 @@
     By Miaan Kramer
 
 ## About
-Using Google Maps API and FoureSquare API. I have made a neighborhood map showing nearby restaurants and pleasant places to go to in your time visiting my little corner of the world. Paarl, South Africa. I hope you enjoy my little application.
+Using Google Maps API and FoureSquare API. I have made a neighborhood map showing nearby restaurants and pleasant places to go to in your time visiting my little corner of the world. Paarl, South Africa.
 
 ## Getting Started
 
-    => Download the project or clone the repository
-    => https://github.com/SirCatzilla/UdacityMapProject
-    => Open the project and run *index.html* in your prefered browser
+    - Download the project or clone the repository
+    - https://github.com/SirCatzilla/UdacityMapProject
+    - Open the project and run *index.html* in your prefered browser
 
 ## File Structure
 
 **UdacityMapProject**
 
-    *CSS*
+    CSS
 
-        => styles.css
+        - styles.css
 
-    *JS*
+    JS
 
-        => app.js
-        => knockout-3.4.3.js
+        - app.js
+        - knockout-3.4.3.js
 
-    => Index.html
+    - Index.html
 
-    => README.md
+    - README.md
 
 ## API's
 
@@ -35,6 +35,6 @@ FoureSquare API
 
 ## Libraries
 
-    => JQuery
-    => Bootstrap
-    => Knockout
+    - JQuery
+    - Bootstrap
+    - Knockout

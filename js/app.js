@@ -74,7 +74,7 @@ var locations = [
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: -33.722259, lng: 18.963637 },
-        zoom: 13
+        zoom: 14
     });
 
     // Initializing bounds and infowindow for later use
@@ -84,16 +84,14 @@ function initMap() {
     ko.applyBindings(new ViewModel());
 }
 
-// Error Logger
-function errorLogger() {
-    alert("Problem Loading Map. Please Check Quality Of Network And Try Again");
-}
 
 var locationMarker = function (data) {
     // To avoid conflict self is declared inorder not to cross data stream
     var self = this;
+    console.log(data);
 
     this.title = data.name;
+    this.type = "";
     this.position = data.coordinates;
     this.street = "";
     this.city = "";
@@ -110,11 +108,9 @@ var locationMarker = function (data) {
     $.getJSON(foureSquareUrl).done(function (data) {
 
         var results = data.response.venues[0];
-        console.log(data);
         // Sets self to data retrieved from API request
-
-        self.title = results.location.name;
-        self.type = results.categories[0].shortName;
+        self.title = results.location.name ? results.location.name : self.title;
+        self.type = results.categories[0].shortName ? results.categories[0].shortName : "Not Available";
         self.street = results.location.address ? results.location.address : "Not Available";
         self.city = results.location.city ? results.location.city : "Not Available";
 
@@ -164,6 +160,7 @@ var ViewModel = function () {
     // Creates new LocationMarker objects
     locations.forEach(loc => {
         self.markerList.push(new locationMarker(loc));
+        console.log(loc);
     });
 
     // Filters markerList and returns and items that matches the search term which inturn removes markers not within it
@@ -171,6 +168,7 @@ var ViewModel = function () {
         var filterTerm = self.searchTerm().toLowerCase();
         if (filterTerm) {
             return ko.utils.arrayFilter(self.markerList(), function (location) {
+
                 var temp = location.title.toLowerCase();
                 var result = temp.includes(filterTerm);
 
@@ -189,8 +187,6 @@ var ViewModel = function () {
 }
 
 function populateInfoWindow(marker, street, type, city, infoWindow) {
-
-    console.log(marker);
     // Creates Info Window with markers data and binds them together
     if (infoWindow.marker != marker) {
         // The content within the info Window
@@ -199,13 +195,12 @@ function populateInfoWindow(marker, street, type, city, infoWindow) {
             "<p class='description'> Address: <span>" + street + "</span><p>" +
             "<p class='description'> City: <span>" + city + "</span></p>";
         infoWindow.setContent(content);
+
         infoWindow.marker = marker;
 
         infoWindow.addListener("closeclick", function () {
             infoWindow.marker = null;
         });
-
-
         // Initiates InfoWindow
         infoWindow.open(map, marker);
     }
@@ -217,4 +212,8 @@ function toggleAnimation(marker) {
     setTimeout(function () {
         marker.setAnimation(null);
     }, 2000);
+}
+// Error Logger
+function errorLogger() {
+    alert("Problem Loading Map. Please Check Quality Of Network And Try Again");
 }
